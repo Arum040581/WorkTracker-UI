@@ -1,0 +1,146 @@
+
+<style>
+.workTrackWrap {
+    background-color: #ddd;
+    padding-left:10px;
+    padding-right:10px;
+}
+.borderWhite {
+border : 1px solid #fff;
+padding-left:5px;
+padding-right:5px;
+}
+.row{
+margin:10px;
+}
+.addWrap {
+margin-left:0px;
+margin-right:0px;
+}
+.categoryListWrap div{
+padding-top:5px;
+padding-bottom:5px;
+margin-left:0px;
+margin-right:0px;
+}
+div.btn-Box{
+background-color :#616161;
+margin-left:5px;
+}
+div.btn-Box span{
+color:#000;
+font-weight:bold;
+}
+</style>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script>
+$('.btn-number').click(function(e){
+    e.preventDefault();
+    
+    fieldName = $(this).attr('data-field');
+    type      = $(this).attr('data-type');
+    var input = $("input[name='"+fieldName+"']");
+    var currentVal = parseInt(input.val());
+    if (!isNaN(currentVal)) {
+        if(type == 'minus')
+            input.val(currentVal - 1);
+        else if(type == 'plus')
+            input.val(currentVal + 1);
+    } else {
+        input.val(0);
+    }
+});
+</script>
+<div class="container-fluid workTrackWrap">
+
+
+ <form #f="ngForm" id="createWrk" (ngSubmit)="createWrkCol(f)">
+  
+	
+	<div class="row">
+		<div class="col-sm-12 borderWhite  " style="">
+			<span class="col-sm-12"> Add Workout </span>
+		</div>
+	</div>
+	<div class="row ">
+	
+	 
+		<div class="input-group">
+			 <div class="col-sm-4 col-xs-4 borderWhite  " style="">			
+				<span  class="col-sm-4"> Title </span>
+			</div>
+			<div class="col-sm-8 col-xs-8 " style="">
+			
+				<input id="name" type="text" ng-minlength="3" required class="form-control col-sm-12 col-xs-12" name="workoutTitle" placeholder="" [(ngModel)] = "createWrkModel.workoutTitle">
+			</div>
+		</div>
+	 
+  
+	</div>
+	
+	<div class="row ">
+		
+		  <div class="input-group">
+			<div class="col-sm-4 col-xs-4 borderWhite  " style="">			
+				<span  class="col-sm-4"> Note </span>
+			</div>
+			<div class="col-sm-8 col-xs-8 " style="">
+			
+				<textarea id="note" rows="5" required class=" col-sm-12 col-xs-12" name="workoutNote" [(ngModel)] = "createWrkModel.workoutNote"></textarea>
+			</div>
+		</div>		
+	</div> 
+	<div class="row ">
+		
+		  <div class="input-group">
+			<div class="col-sm-6 col-xs-6 borderWhite  " style="">			
+				<span  class="col-sm-12"> Calories Burnt Per Min </span>
+			</div>
+			<div class="col-sm-6 col-xs-6 " style="">
+			
+				<div class="input-group">
+    
+    <input type="text" name="caloriesBurnPerMin" required class="form-control input-number" value="1" [(ngModel)] = "createWrkModel.caloriesBurnPerMin">
+    <span class="input-group-btn">
+        <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="num"><span class="glyphicon glyphicon-plus"></span></button>
+    </span>
+	<span class="input-group-btn">
+        <button type="button" class="btn btn-default btn-number" data-type="minus" data-field="num"><span class="glyphicon glyphicon-minus"></span></button>
+    </span>
+</div>
+				
+			</div>
+		</div>
+			
+	</div> 
+		
+	<div class="row ">
+		
+		  <div class="input-group">
+			<div class="col-sm-6 col-xs-6 borderWhite  " style="">			
+				<span  class="col-sm-4"> Category </span>
+			</div>
+			<div class="col-sm-6 col-xs-6 " style="">
+			
+			<select class="form-control col-sm-12 col-xs-12" id="categoryId" name="categoryId" required [(ngModel)]="categoryModel.categoryId">
+  <option *ngFor="let category of listCategory"  [ngValue]="category.categoryId" value= {{category.categoryId}}>
+    {{category.categoryName}}
+  </option>
+</select>
+				
+			</div>
+		</div>		
+	</div> 
+		<div class="row ">
+		<button type="submit">Add Workout</button>
+		 
+	</div> 
+</form>
+
+</div>
+
+
+
