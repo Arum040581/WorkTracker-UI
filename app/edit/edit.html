@@ -36,44 +36,13 @@ font-weight:bold;
 
 <div class="container-fluid workTrackWrap">
 
-<script>
-var quantitiy=0;
-   $('.quantity-right-plus').click(function(e){
-        
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-        
-        // If is not undefined
-            
-            $('#quantity').val(quantity + 1);
 
-          
-            // Increment
-        
-    });
-
-     $('.quantity-left-minus').click(function(e){
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-        
-        // If is not undefined
-      
-            // Increment
-            if(quantity>0){
-            $('#quantity').val(quantity - 1);
-            }
-    });
-</script>
  <form #f="ngForm" id="createWrk" (ngSubmit)="createWrkCol(f)">
   
 	
 	<div class="row">
 		<div class="col-sm-12 borderWhite  " style="">
-			<span class="col-sm-12"> Add Workout </span>
+			<span class="col-sm-12"> Edit Workout </span>
 		</div>
 	</div>
 	<div class="row ">
@@ -104,29 +73,7 @@ var quantitiy=0;
 			</div>
 		</div>		
 	</div> 
-	<div class="row ">
-		
-		  <div class="input-group">
-			<div class="col-sm-6 col-xs-6 borderWhite  " style="">			
-				<span  class="col-sm-12"> Calories Burnt Per Min </span>
-			</div>
-			<div class="col-sm-6 col-xs-6 " style="">
-			
-				<div class="input-group">
-    
-    <input type="text" name="caloriesBurnPerMin" required class="form-control input-number" disabled=true  [(ngModel)] = "createWrkModel.caloriesBurnPerMin" min="1" max="100">
-    <span class="input-group-btn">
-        <button type="button" class="quantity-left-plus btn btn-default btn-number" (click)=plus() data-type="plus" data-field="num"><span class="glyphicon glyphicon-plus"></span></button>
-    </span>
-	<span class="input-group-btn">
-        <button type="button" class="quantity-left-minus btn btn-default btn-number" (click)=minus() data-type="minus" data-field="num"><span class="glyphicon glyphicon-minus"></span></button>
-    </span>
-</div>
-				
-			</div>
-		</div>
-			
-	</div> 
+	
 		
 	<div class="row ">
 		
@@ -146,7 +93,10 @@ var quantitiy=0;
 		</div>		
 	</div> 
 		<div class="row ">
-		<button [disabled]="!f.valid" class="btn-Box col-sm-6 col-xs-6" style="background-color :#616161;font-weight:bold;" type="submit">Add Workout</button>
+			<button [disabled]="!f.valid" class="btn-Box col-sm-2 col-xs-2" style="background-color :#616161;font-weight:bold;" type="submit">Update</button>
+		
+		<button class="btn-Box col-sm-2 col-xs-2" style="background-color :#616161;font-weight:bold;" (click)="cancel()">Cancel</button>
+		 
 		 
 	</div> 
 </form>

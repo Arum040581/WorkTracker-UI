@@ -73,12 +73,13 @@ font-weight:bold;
 		</form>
 	<div *ngFor = 'let wrkcategory of workoutcategory'>
 	<div class="row categoryListWrap">
-		<div class="col-sm-7 col-xs-7 borderWhite  " style="">			
-			<span  class="col-sm-12"> {{wrkcategory.categoryName}} </span>
+		<div class="col-sm-7 col-xs-7 borderWhite  " style="">	
+			
+			<span  class="col-sm-12" style="display:block"> {{wrkcategory.categoryName}} </span>
 		</div>
-		<div class="col-sm-2 col-xs-2 btn-Box" style="">
-		
-			<span class="col-sm-12 col-xs-12">  Edit</span>
+		<div class="col-sm-2 col-xs-2 " style="">
+			<button class="btn-Box" style="background-color :#616161;font-weight:bold;" (click)="editCategory(wrkcategory.categoryId)">
+			<span class="col-sm-12 col-xs-12">  Edit</span></button>
 		</div>
 		<div class="col-sm-2 col-xs-2 " style="">
 			<button class="btn-Box" style="background-color :#616161;font-weight:bold;" (click)="deleteCategory(wrkcategory.categoryId)">	<span class="col-sm-12"  > Delete </span></button>

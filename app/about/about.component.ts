@@ -25,7 +25,14 @@ export class AboutComponent {
       .subscribe(workoutcategory => this.workoutcategory = workoutcategory);
 	
 	}
-	
+	editCategory(value){
+		console.log(value);
+		this.wrkoutcategory  = new WorkoutCategory(value,"");
+	 
+		console.log(this.wrkoutcategory);
+		//this.wrkCategoryService.deleteWorkoutCategory(this.wrkoutcategory).subscribe(data => console.log(JSON.stringify(data)));
+		this.refreshData();
+	}
 
 	deleteCategory(value){
 		console.log(value);
@@ -34,6 +41,7 @@ export class AboutComponent {
 		console.log(this.wrkoutcategory);
 		this.wrkCategoryService.deleteWorkoutCategory(this.wrkoutcategory).subscribe(data => console.log(JSON.stringify(data)));
 		this.refreshData();
+		
 	}
 	addcategory(form)
 	{
@@ -41,8 +49,10 @@ export class AboutComponent {
 		console.log("sdfs");
 		this.wrkCategoryService.addWorkoutCategorys(form.value).subscribe(data => this.refreshData());
 		this.refreshData();
+		form.reset();
 		alert("Added Successfully");
 		this.refreshData();
+		
 	}
 	
 	

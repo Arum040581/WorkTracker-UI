@@ -23,14 +23,26 @@ export class CreateComponent {
     constructor(private createService: CreateService){
        
     };
-
+	
+	plus(){
+			console.log(this.createWrkModel.caloriesBurnPerMin);
+			this.createWrkModel.caloriesBurnPerMin = this.createWrkModel.caloriesBurnPerMin+1;
+			console.log(this.createWrkModel.caloriesBurnPerMin);
+			
+	}
+	minus(){
+			console.log(this.createWrkModel.caloriesBurnPerMin);
+			if(this.createWrkModel.caloriesBurnPerMin!=0)
+				this.createWrkModel.caloriesBurnPerMin =this.createWrkModel.caloriesBurnPerMin -1;	
+			console.log(this.createWrkModel.caloriesBurnPerMin);	
+				
+	}
+	
 	createWrkCol(form)
-	{
-		console.log(form.value);
-		console.log("sdfs");
-		console.log(form);
-		console.log(form.value.categoryId);
-		this.workoutCollectionVO = new WorkoutCollectionVO(form.value.workoutTitle,form.value.workoutNote,form.value.caloriesBurnPerMin,form.value.categoryId);
+	{		
+		console.log(this.createWrkModel.caloriesBurnPerMin);
+		this.workoutCollectionVO = new WorkoutCollectionVO(form.value.workoutTitle,form.value.workoutNote,this.createWrkModel.caloriesBurnPerMin,form.value.categoryId);
+		console.log(this.workoutCollectionVO);
 		this.createService.addWorkoutCollection(this.workoutCollectionVO).subscribe(data => console.log(JSON.stringify(data)));
 		form.reset();
 		alert("Added Successfully");

@@ -20,15 +20,22 @@ export class WrkCollectionsService {
       .do(data => console.log(JSON.stringify(data)));
 		
    }
-   deleteWorkoutCategory(id:String): Observable<Workoutcollection> {
-		  let headers = new Headers({ 'Content-Type': 'application/json' });
-   let options = new RequestOptions({ headers: headers });
-    return this._http.post("http://localhost:9081/workouttracker/category/delete"+id,options).map(this.extractData).do(data => console.log(JSON.stringify(data)));
+   deleteWorkoutCollection(id:String){
+	  return this._http.delete("http://172.18.2.182:9081/workouttracker/workoutcollection/"+id).map((response: Response) => console.log("@#@@#@#"+response.json())).do(data => console.log(JSON.stringify(data)));
+		
+		
+   }
+   getWkCollectionById(id:String): Observable<Workoutcollection>{
+	
+    return this._http.get("http://172.18.2.182:9081/workouttracker/workoutcollection/"+id).map((response: Response) => <Workoutcollection> response.json()).do(data => console.log(JSON.stringify(data)));
 		
 		
    }
     extractData(res: Response) {
   let body = res.json();
+  console.log("response @@@@@@@@@@@@@");
+  console.log(res.text());
+   console.log(res.status.toString());
   return body || {};
 }
 }
