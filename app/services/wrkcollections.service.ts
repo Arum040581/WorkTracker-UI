@@ -15,19 +15,19 @@ export class WrkCollectionsService {
   workoutcollection;
    getWorkoutcollections(): Observable<Workoutcollection[]> {
 	  
-		 return this._http.get("http://172.18.2.182:9081/workouttracker/workoutcollection/get")
+		 return this._http.get("http://localhost:9081/workouttracker/workoutcollection/get")
       .map((response: Response) => <Workoutcollection[]> response.json())
       .do(data => console.log(JSON.stringify(data)));
 		
    }
    deleteWorkoutCollection(id:String){
-	  return this._http.delete("http://172.18.2.182:9081/workouttracker/workoutcollection/"+id).map((response: Response) => console.log("@#@@#@#"+response.json())).do(data => console.log(JSON.stringify(data)));
+	  return this._http.delete("http://localhost:9081/workouttracker/workoutcollection/"+id).map((response: Response) => console.log("@#@@#@#"+response.json())).do(data => console.log(JSON.stringify(data)));
 		
 		
    }
    getWkCollectionById(id:String): Observable<Workoutcollection>{
 	
-    return this._http.get("http://172.18.2.182:9081/workouttracker/workoutcollection/"+id).map((response: Response) => <Workoutcollection> response.json()).do(data => console.log(JSON.stringify(data)));
+    return this._http.get("http://localhost:9081/workouttracker/workoutcollection/"+id).map((response: Response) => <Workoutcollection> response.json()).do(data => console.log(JSON.stringify(data)));
 		
 		
    }

@@ -37,7 +37,7 @@ font-weight:bold;
 <div class="container-fluid workTrackWrap">
 
 
- <form #f="ngForm" id="createWrk" (ngSubmit)="createWrkCol(f)">
+ <form #f="ngForm" id="createWrk" (ngSubmit)="startWrkout(f)">
   
 	
 	<div class="row">
@@ -53,7 +53,7 @@ font-weight:bold;
 				<span  class="col-sm-12"> Title </span>
 			</div>
 			<div class="col-sm-6 col-xs-6 " style="">
-			
+							
 				<input id="name" type="text" ng-minlength="3" disabled class="form-control col-sm-12 col-xs-12" name="workoutTitle" placeholder="" [(ngModel)] = "workoutModel.workoutTitle">
 			</div>
 		</div>
@@ -69,7 +69,7 @@ font-weight:bold;
 			</div>
 			<div class="col-sm-6 col-xs-6 " style="">
 			
-				<textarea id="note" rows="5" disabled class=" col-sm-12 col-xs-12" name="workoutNote" [(ngModel)] = "workoutModel.workoutNote"></textarea>
+				<textarea id="note" rows="5" disabled class=" form-control col-sm-12 col-xs-12" name="workoutNote" [(ngModel)] = "workoutModel.workoutNote"></textarea>
 			</div>
 		</div>		
 	</div> 
@@ -82,7 +82,7 @@ font-weight:bold;
 			</div>
 			<div class="col-sm-6 col-xs-6 " style="">
 			
-				<input id="workDate" type="text" ng-minlength="3" name="workDate" value= "{{workoutModel.workDate| date : 'shortDate' }}" />
+				<input id="workDate" type="text" ng-minlength="3" name="workDate" class="form-control" [ngModel]= "workoutModel.workDate| date : 'shortDate' " />
 			</div>
 		</div>
 		  
@@ -94,13 +94,13 @@ font-weight:bold;
 			</div>
 			<div class="col-sm-6 col-xs-6 " style="">
 			
-				<input id="workTime" type="text" name="workTime" value= "{{workoutModel.workTime| date : 'shortTime' }}" ng-minlength="3" />
+				<input id="workTime" type="text" name="workTime"  class="form-control"[ngModel]= "workoutModel.workTime| date : 'mediumTime' " ng-minlength="3" />
 			</div>
 		</div>
 		  
 	</div>  
 		<div class="row ">
-		<button [disabled]="!f.valid" class="btn-Box col-sm-2 col-xs-2" style="background-color :#616161;font-weight:bold;" type="submit">Start</button>
+		<button  class="btn-Box col-sm-2 col-xs-2" style="background-color :#616161;font-weight:bold;" type="submit">Start</button>
 		
 		<button class="btn-Box col-sm-2 col-xs-2" style="background-color :#616161;font-weight:bold;" (click)="cancel()">Cancel</button>
 		 

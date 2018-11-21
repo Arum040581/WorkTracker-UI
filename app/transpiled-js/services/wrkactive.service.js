@@ -15,29 +15,29 @@ require("rxjs/add/operator/map");
 require("rxjs/add/operator/catch");
 require("rxjs/add/observable/throw");
 require("rxjs/add/operator/do");
-var CreateService = /** @class */ (function () {
-    function CreateService(_http) {
+var WrkActiveService = /** @class */ (function () {
+    function WrkActiveService(_http) {
         this._http = _http;
     }
-    CreateService.prototype.getWorkoutCategorys = function () {
-        return this._http.get("http://localhost:9081/workouttracker/category/getcategorys")
-            .map(function (response) { return response.json(); })
-            .do(function (data) { return console.log(JSON.stringify(data)); });
+    WrkActiveService.prototype.startWorkout = function (wrkActvie) {
+        console.log(wrkActvie);
+        return this._http.post("http://localhost:9081/workouttracker/workoutactive/create", wrkActvie).map(this.extractData).do(function (data) { return console.log(JSON.stringify(data)); });
     };
-    CreateService.prototype.addWorkoutCollection = function (workoutCollectionVO) {
-        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.post("http://localhost:9081/workouttracker/workoutcollection/create", workoutCollectionVO, options).map(this.extractData).do(function (data) { return console.log(JSON.stringify(data)); });
+    WrkActiveService.prototype.endWorkout = function (wrkActvie) {
+        console.log(wrkActvie);
+        return this._http.post("http://localhost:9081/workouttracker/workoutactive/update", wrkActvie).map(this.extractData).do(function (data) { return console.log(JSON.stringify(data)); });
     };
-    CreateService.prototype.extractData = function (res) {
+    WrkActiveService.prototype.extractData = function (res) {
         var body = res.json();
-        return body || {};
+        console.log("response @@@@@@@@@@@@@");
+        console.log(res.text());
+        return body;
     };
-    CreateService = __decorate([
+    WrkActiveService = __decorate([
         core_1.Injectable(),
         __metadata("design:paramtypes", [http_1.Http])
-    ], CreateService);
-    return CreateService;
+    ], WrkActiveService);
+    return WrkActiveService;
 }());
-exports.CreateService = CreateService;
-//# sourceMappingURL=create.service.js.map
+exports.WrkActiveService = WrkActiveService;
+//# sourceMappingURL=wrkactive.service.js.map

@@ -23,7 +23,7 @@ export class CreateService {
    addWorkoutCollection(workoutCollectionVO:WorkoutCollectionVO): Observable<WorkoutCollectionVO>{
 		  let headers = new Headers({ 'Content-Type': 'application/json' });
    let options = new RequestOptions({ headers: headers });
-    return this._http.post("http://172.18.2.182:9081/workouttracker/workoutcollection/create", workoutCollectionVO, options).map(this.extractData).do(data => console.log(JSON.stringify(data)));
+    return this._http.post("http://localhost:9081/workouttracker/workoutcollection/create", workoutCollectionVO, options).map(this.extractData).do(data => console.log(JSON.stringify(data)));
 		
 		
    }

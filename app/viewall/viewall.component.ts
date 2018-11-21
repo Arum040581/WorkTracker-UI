@@ -23,10 +23,11 @@ export class ViewAllComponent {
     constructor(private wrkCollectionsService: WrkCollectionsService,router: Router){   
 		this.router = router;	
     };
-	navigateWrkout(url,value){
+	navigateWrkout(url,workid,wrkActiveId){
 		console.log(url);
-		console.log(value);
-		this.router.navigateByUrl(url+';workid='+value);
+		console.log(workid);
+		console.log(wrkActiveId);
+		this.router.navigateByUrl(url+';workid='+workid+';wrkActiveId='+wrkActiveId);
 	}
 	
 	
@@ -34,12 +35,12 @@ export class ViewAllComponent {
 		console.log(value);
 		 this.wrkCollectionsService.deleteWorkoutCollection(value)
       .subscribe((res) => {
-         console.log(res);
+        	console.log(this.wrkoutcollection);
+			alert("Successfully Deleted")
+			this.wrkCollectionsService.getWorkoutcollections()
+					.subscribe(workoutcollection => this.workoutcollection = workoutcollection);
 	  });
-	  console.log(this.wrkoutcollection);
-	  alert("Successfully Deleted")
-	   this.wrkCollectionsService.getWorkoutcollections()
-      .subscribe(workoutcollection => this.workoutcollection = workoutcollection);
+
 		
 	}
 	ngOnInit() : void {

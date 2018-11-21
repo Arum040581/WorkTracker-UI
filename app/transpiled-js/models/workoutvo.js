@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var WorkoutVo = /** @class */ (function () {
-    function WorkoutVo(workoutTitle, workoutNote, workDate, workTime) {
+    function WorkoutVo(workoutId, workoutTitle, workoutNote, workDate, workTime) {
+        this.workoutId = workoutId;
         this.workoutTitle = workoutTitle;
         this.workoutNote = workoutNote;
         this.workDate = workDate;

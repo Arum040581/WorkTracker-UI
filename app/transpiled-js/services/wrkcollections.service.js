@@ -20,15 +20,15 @@ var WrkCollectionsService = /** @class */ (function () {
         this._http = _http;
     }
     WrkCollectionsService.prototype.getWorkoutcollections = function () {
-        return this._http.get("http://172.18.2.182:9081/workouttracker/workoutcollection/get")
+        return this._http.get("http://localhost:9081/workouttracker/workoutcollection/get")
             .map(function (response) { return response.json(); })
             .do(function (data) { return console.log(JSON.stringify(data)); });
     };
     WrkCollectionsService.prototype.deleteWorkoutCollection = function (id) {
-        return this._http.delete("http://172.18.2.182:9081/workouttracker/workoutcollection/" + id).map(function (response) { return console.log("@#@@#@#" + response.json()); }).do(function (data) { return console.log(JSON.stringify(data)); });
+        return this._http.delete("http://localhost:9081/workouttracker/workoutcollection/" + id).map(function (response) { return console.log("@#@@#@#" + response.json()); }).do(function (data) { return console.log(JSON.stringify(data)); });
     };
     WrkCollectionsService.prototype.getWkCollectionById = function (id) {
-        return this._http.get("http://172.18.2.182:9081/workouttracker/workoutcollection/" + id).map(function (response) { return response.json(); }).do(function (data) { return console.log(JSON.stringify(data)); });
+        return this._http.get("http://localhost:9081/workouttracker/workoutcollection/" + id).map(function (response) { return response.json(); }).do(function (data) { return console.log(JSON.stringify(data)); });
     };
     WrkCollectionsService.prototype.extractData = function (res) {
         var body = res.json();

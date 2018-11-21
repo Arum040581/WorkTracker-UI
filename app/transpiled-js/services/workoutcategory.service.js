@@ -27,7 +27,7 @@ var WorkoutCategoryService = /** @class */ (function () {
     WorkoutCategoryService.prototype.addWorkoutCategorys = function (workoutCategory) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this._http.post("http://172.18.2.182:9081/workouttracker/category/create", workoutCategory, options).map(this.extractData).do(function (data) { return console.log(JSON.stringify(data)); });
+        return this._http.post("http://localhost:9081/workouttracker/category/create", workoutCategory, options).map(this.extractData).do(function (data) { return console.log(JSON.stringify(data)); });
     };
     WorkoutCategoryService.prototype.deleteWorkoutCategory = function (workoutCategory) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

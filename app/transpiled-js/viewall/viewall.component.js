@@ -19,22 +19,22 @@ var ViewAllComponent = /** @class */ (function () {
         this.router = router;
     }
     ;
-    ViewAllComponent.prototype.navigateWrkout = function (url, value) {
+    ViewAllComponent.prototype.navigateWrkout = function (url, workid, wrkActiveId) {
         console.log(url);
-        console.log(value);
-        this.router.navigateByUrl(url + ';workid=' + value);
+        console.log(workid);
+        console.log(wrkActiveId);
+        this.router.navigateByUrl(url + ';workid=' + workid + ';wrkActiveId=' + wrkActiveId);
     };
     ViewAllComponent.prototype.deleteWrkColection = function (value) {
         var _this = this;
         console.log(value);
         this.wrkCollectionsService.deleteWorkoutCollection(value)
             .subscribe(function (res) {
-            console.log(res);
+            console.log(_this.wrkoutcollection);
+            alert("Successfully Deleted");
+            _this.wrkCollectionsService.getWorkoutcollections()
+                .subscribe(function (workoutcollection) { return _this.workoutcollection = workoutcollection; });
         });
-        console.log(this.wrkoutcollection);
-        alert("Successfully Deleted");
-        this.wrkCollectionsService.getWorkoutcollections()
-            .subscribe(function (workoutcollection) { return _this.workoutcollection = workoutcollection; });
     };
     ViewAllComponent.prototype.ngOnInit = function () {
         var _this = this;
